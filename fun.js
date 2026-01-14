@@ -2,7 +2,6 @@
     TODO: 
     + displayPool()
     + display small icons on the pool element
-    + prevent mulitple pools with same name (overwrite)
 */
 
 let charRoster = document.getElementById("character_interface");
@@ -32,11 +31,21 @@ function render(){
     rosterHtml = ""
 
     // pools render
-    
+    index = 0; // 
     pools.forEach(pool => {
-        poolsHtml +=  `<li class="pool" onclick="displayPool"> 
-        <div class="poolTextField"><p>${pool.name}</p></div>
-        <div class="poolIconField"></div>
+        
+        poolsHtml +=  `
+        <li class="pool" > 
+            <div class="poolTextField">
+                <p>${pool.name}</p>
+            </div>
+            <div class="poolIconField" onclick="displayPool">
+            ${pool.data}
+            </div>
+            <div class="poolUIField">
+                <input type="checkbox">
+                <button onclick="deleteMe(this)" id="${index}">Delete</button>
+            </div>
         </li>`;
 
         /*
@@ -45,7 +54,7 @@ function render(){
             
         })
         */
-
+        index++;
     })
     poolsList.innerHTML = poolsHtml;
     poolsHtml = ""
@@ -70,10 +79,33 @@ function collectCurrentPool(){
         }
         i++;
     })
-    // console.log(newPool);
+    console.log(newPool);
 
-    pools.push({
-        name:document.getElementById("poolName").value,
-        data: newPool});
+    const existingIndex = pools.findIndex(pool => pool.name.toLowerCase() === document.getElementById("poolName").value.toLowerCase());
+    if(existingIndex !==-1){
+       console.log(existingIndex);
+       pools[existingIndex] = {
+            name: document.getElementById("poolName").value,
+            data: newPool}
+    } else {
+        pools.push({
+            name:document.getElementById("poolName").value,
+            data: newPool});
+    }
+    render()
+    document.getElementById("poolName").value = ""
+}
+
+function disableAll(){
+    includedFighters = includedFighters.map(() => false);
+    render()
+}
+function enableAll(){
+    includedFighters = includedFighters.map(() => true);
+    render()
+}
+
+function deleteMe(e){
+    pools.splice(e.id,1) // e.id: id attribute of pool delete button in html
     render()
 }
