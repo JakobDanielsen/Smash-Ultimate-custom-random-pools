@@ -1,5 +1,26 @@
+@font-face {
+  font-family: "SmashFont";
+  src: url("/resources/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body{
     margin: 2% 5%;
+}
+
+html {
+  font-family: "SmashFont", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h1{
+    font-size: 5rem;
+}
+
+main button {
+    padding: 1rem;
 }
 
 #bottom {
@@ -73,7 +94,6 @@ body{
     font-weight: bolder;
     text-transform: uppercase;
     color: rgb(43, 43, 43);
-    font-family: sans-serif;
 }
 
 .poolIconField{
@@ -104,10 +124,49 @@ body{
     font-size: 1rem;
 }
 
+#characterPopup {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top:2.5vh;
+    left: 2.5vw;
+    width: 95vw;
+    height: 95vh;
+    background-color: gainsboro;
+    border-radius: 2rem;
+}
+
+.characterDisplaySection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    margin: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+
+button {
+    cursor: pointer;
+}
+
 .playButton {
     font-size: 5rem;
     padding: 3rem;
     box-shadow: 3rem 3rem rgba(0, 0, 0, 0.1) ;
 }
+.playButton:hover{
+    transform: scale(1.07);
+    transform-origin: center;
+}
 
-
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
