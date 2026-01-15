@@ -1,13 +1,17 @@
 /* 
     TODO: 
-    + JSON local saving
+    + localstorage saving
+    +   -   move localstorageupdate to poolsrender?
+    + dont deselect pools after submit
+    + sfx?
+    + remove icon flicker after submit
 */
 
 let charRoster = document.getElementById("character_interface");
 let poolsList = document.getElementById("pools");
 
-
 let pools = [];
+
 let fighters = [
     {fighter: "Mario",active: true, imgpath:"resources/Pngs/mario.png"},
     {fighter: "DK",active: true, imgpath:"resources/Pngs/donkey_kong.png"},
@@ -98,24 +102,20 @@ let fighters = [
     {fighter: "Sephiroth",active: true, imgpath:"resources/Pngs/sephiroth.png"},
     {fighter: "Pyra & Mythra",active: true, imgpath:"resources/Pngs/homura.png"},
     {fighter: "Kazuya",active: true, imgpath:"resources/Pngs/kazuya.png"},
-    {fighter: "Sora",active: true, imgpath:"resources/Pngs/sora.png"}
-    ]
-let players = [];
-
-let rosterHtml = ""; // html code for the roster that is displayed upon render
-let poolsHtml = ""; // html code for the pools that is displayed upon render
+    {fighter: "Sora",active: true, imgpath:"resources/Pngs/sora.png"}]
 
 function render(){
     // roster render
+    let rosterHtml = "";
     fighters.forEach(currentFighter => {
     rosterHtml += `<li id="${currentFighter.fighter}" onclick="toggleFighter(this.id)"><img src="${currentFighter.imgpath}"></li>`;
     })
     charRoster.innerHTML = rosterHtml;
-    rosterHtml = ""
 }
-render(); // initial render
+render(); // initial render, not nescesary as a function but could prove useful later
 
 function renderPools(){
+    let poolsHtml = "";
     pools.forEach((pool,index) => {
 
         let allIcons = ""
@@ -136,38 +136,30 @@ function renderPools(){
                 <button onclick="deleteMe(this)" id="${index}">Delete</button>
             </div>
         </li>`
-        /*
-        Display character images inside the tab
-        pool.data.forEach(fighter => {
-            
-        })
-        */
-        index++;
     })
     poolsList.innerHTML = poolsHtml;
-    poolsHtml = ""
 }
+
+
 
 function toggleFighter(currentFighter){
     // console.log("toggle " + currentFighter); 
-    fighterValue = fighters.find(obj => obj.fighter === currentFighter); // finds object with same referenece since passing objects through onclick is unintuitive
+    const fighterValue = fighters.find(obj => obj.fighter === currentFighter); // finds object with same referenece since passing objects through onclick is unintuitive
     // console.log(fighterValue);
     fighterValue.active = !fighterValue.active 
-    if(!fighterValue.active) document.getElementById(fighterValue.fighter).classList.add("disabled")
-        else document.getElementById(fighterValue.fighter).classList.remove("disabled")
+    const fighterValueElement = document.getElementById(fighterValue.fighter)
+    if(!fighterValue.active) fighterValueElement.classList.add("disabled")
+        else fighterValueElement.classList.remove("disabled")
 }
 
-function collectCurrentPool(){
+function savePool(){
     if (document.getElementById("poolName").value == "") return
     let newPool = [];
 
-    fighters.forEach((currentFighter, i) => {
+    fighters.forEach((currentFighter) => {
         if(currentFighter.active){
             newPool.push(currentFighter)
-            // console.log(currentFighter);
-            
         }
-        i++;
     })
     // console.log(newPool);
 
@@ -186,6 +178,7 @@ function collectCurrentPool(){
     
     renderPools()
     document.getElementById("poolName").value = ""
+    updateLocalstorage("savedPools",pools)
 }
 
 function setAll(value){
@@ -205,20 +198,30 @@ function setAll(value){
 function deleteMe(e){
     pools.splice(e.id,1) // e.id: id attribute of pool delete button in html
     renderPools()
+    updateLocalstorage("savedPools",pools)
 }
 
 function playGame() {
     const checkboxes = document.querySelectorAll(".poolUIField input[type='checkbox']");
-    const selectedPools = [];
+    let selectedPools = [];
 
     checkboxes.forEach((checkbox, index) => {
         if (checkbox.checked) {
             selectedPools.push(pools[index]);
         }
     });
+    let containsEmptyPool = false
+    selectedPools.forEach(pool =>{
+        if(pool.data.length === 0) containsEmptyPool = true
+    })
+    if(containsEmptyPool) return;
+  
+
 
     characterRevealHtml ="";
     selectedPools.forEach(pool =>{
+    
+
     const randomIndex = Math.floor(Math.random() * pool.data.length);
     const randomFighter = pool.data[randomIndex].fighter
 
@@ -247,7 +250,22 @@ function closeWindow(){
     document.getElementById("characterPopup").style.display = "none"
 }
 
+function updateLocalstorage(key,data){
+    localStorage.setItem(key,JSON.stringify(data))
+}
+
+
 document.getElementById("poolNameForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    collectCurrentPool(); 
+    savePool(); 
 });
+
+
+if (localStorage.getItem("savedPools") !== null) {
+    let localStorageData = JSON.parse(localStorage.getItem("savedPools"))
+    localStorageData.forEach(e =>{
+        // console.log(e);
+        pools.push(e)
+    })
+    renderPools();
+}
