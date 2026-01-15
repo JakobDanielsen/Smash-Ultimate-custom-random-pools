@@ -45,6 +45,9 @@ main button {
     list-style: none;
     border-radius: 10%;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.1) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #character_interface li:hover {
@@ -53,6 +56,11 @@ main button {
 
 #character_interface li.disabled {
     background-color: rgb(221, 203, 181) ;
+}
+
+#character_interface li img {
+   height: 100%;
+   width: 100%;
 }
 
 #pools {

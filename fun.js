@@ -1,6 +1,5 @@
 /* 
     TODO: 
-    + display small icons on the pool element
     + display icons on roster screen
     + JSON local saving
 */
@@ -11,89 +10,89 @@ let poolsList = document.getElementById("pools");
 
 let pools = [];
 let fighters = [
-    {fighter: "Mario",active: true, imgpath:""},
-    {fighter: "DK",active: true, imgpath:""},
-    {fighter: "Link",active: true, imgpath:""},
-    {fighter: "Samus",active: true, imgpath:""},
-    {fighter: "Dark Samus",active: true, imgpath:""},
-    {fighter: "Yoshi",active: true, imgpath:""},
-    {fighter: "Kirby",active: true, imgpath:""},
-    {fighter: "Fox",active: true, imgpath:""},
-    {fighter: "Pikachu",active: true, imgpath:""},
-    {fighter: "Luigi",active: true, imgpath:""},
-    {fighter: "Ness",active: true, imgpath:""},
-    {fighter: "Captain Falcon",active: true, imgpath:""},
-    {fighter: "Jigglypuff",active: true, imgpath:""},
-    {fighter: "Gandorf",active: true, imgpath:""},
-    {fighter: "Young Link",active: true, imgpath:""},
-    {fighter: "Lucina",active: true, imgpath:""},
-    {fighter: "Marth",active: true, imgpath:""},
-    {fighter: "Falco",active: true, imgpath:""},
-    {fighter: "Pichu",active: true, imgpath:""},
-    {fighter: "Dr. Mario",active: true, imgpath:""},
-    {fighter: "Zelda",active: true, imgpath:""},
-    {fighter: "Sheik",active: true, imgpath:""},
-    {fighter: "Ice Climbers",active: true, imgpath:""},
-    {fighter: "Bowser",active: true, imgpath:""},
-    {fighter: "Daisy",active: true, imgpath:""},
-    {fighter: "Peach",active: true, imgpath:""},
-    {fighter: "Mewtwo",active: true, imgpath:""},
-    {fighter: "Roy",active: true, imgpath:""},
-    {fighter: "Chrom",active: true, imgpath:""},
-    {fighter: "Game & Watch",active: true, imgpath:""},
-    {fighter: "Meta Knight",active: true, imgpath:""},
-    {fighter: "Pit",active: true, imgpath:""},
-    {fighter: "Dark Pit",active: true, imgpath:""},
-    {fighter: "Zero Suit Samus",active: true, imgpath:""},
-    {fighter: "Wario",active: true, imgpath:""},
-    {fighter: "Snake",active: true, imgpath:""},
-    {fighter: "Ike",active: true, imgpath:""},
-    {fighter: "Pokemon Trainer",active: true, imgpath:""},
-    {fighter: "Diddy Kong",active: true, imgpath:""},
-    {fighter: "Little Mac",active: true, imgpath:""},
-    {fighter: "Rosalina",active: true, imgpath:""},
-    {fighter: "Wii Fit Trainer",active: true, imgpath:""},
-    {fighter: "Mega Man",active: true, imgpath:""},
-    {fighter: "Villager",active: true, imgpath:""},
-    {fighter: "Wolf",active: true, imgpath:""},
-    {fighter: "Toon Link",active: true, imgpath:""},
-    {fighter: "ROB",active: true, imgpath:""},
-    {fighter: "Lucario",active: true, imgpath:""},
-    {fighter: "Olimar",active: true, imgpath:""},
-    {fighter: "King Dedede",active: true, imgpath:""},
-    {fighter: "Sonic",active: true, imgpath:""},
-    {fighter: "Lucas",active: true, imgpath:""},
-    {fighter: "Greninja",active: true, imgpath:""},
-    {fighter: "Palutena",active: true, imgpath:""},
-    {fighter: "Pacman",active: true, imgpath:""},
-    {fighter: "Robin",active: true, imgpath:""},
-    {fighter: "Shulk",active: true, imgpath:""},
-    {fighter: "Bowser Jr.",active: true, imgpath:""},
-    {fighter: "Duck Hunt Duo",active: true, imgpath:""},
-    {fighter: "Ryu",active: true, imgpath:""},
-    {fighter: "Ken",active: true, imgpath:""},
-    {fighter: "Cloud",active: true, imgpath:""},
-    {fighter: "Corrin",active: true, imgpath:""},
-    {fighter: "Bayonetta",active: true, imgpath:""},
-    {fighter: "Inkling",active: true, imgpath:""},
-    {fighter: "Ridley",active: true, imgpath:""},
-    {fighter: "Simon",active: true, imgpath:""},
-    {fighter: "Ricther",active: true, imgpath:""},
-    {fighter: "King K Rool",active: true, imgpath:""},
-    {fighter: "Isabelle",active: true, imgpath:""},
-    {fighter: "Incineroar",active: true, imgpath:""},
-    {fighter: "Pirhana Plant",active: true, imgpath:""},
-    {fighter: "Joker",active: true, imgpath:""},
-    {fighter: "Hero",active: true, imgpath:""},
-    {fighter: "Banjo",active: true, imgpath:""},
-    {fighter: "Terry",active: true, imgpath:""},
-    {fighter: "Byleth",active: true, imgpath:""},
-    {fighter: "Min Min",active: true, imgpath:""},
-    {fighter: "Steve",active: true, imgpath:""},
-    {fighter: "Sephiroth",active: true, imgpath:""},
-    {fighter: "Pyra & Mythra",active: true, imgpath:""},
-    {fighter: "Kazuya",active: true, imgpath:""},
-    {fighter: "Sora",active: true, imgpath:""}
+    {fighter: "Mario",active: true, imgpath:"resources/Pngs/mario.png"},
+    {fighter: "DK",active: true, imgpath:"resources/Pngs/donkey_kong.png"},
+    {fighter: "Link",active: true, imgpath:"resources/Pngs/link.png"},
+    {fighter: "Samus",active: true, imgpath:"resources/Pngs/samus.png"},
+    {fighter: "Dark Samus",active: true, imgpath:"resources/Pngs/dark_samus.png"},
+    {fighter: "Yoshi",active: true, imgpath:"resources/Pngs/yoshi.png"},
+    {fighter: "Kirby",active: true, imgpath:"resources/Pngs/kirby.png"},
+    {fighter: "Fox",active: true, imgpath:"resources/Pngs/fox.png"},
+    {fighter: "Pikachu",active: true, imgpath:"resources/Pngs/pikachu.png"},
+    {fighter: "Luigi",active: true, imgpath:"resources/Pngs/luigi.png"},
+    {fighter: "Ness",active: true, imgpath:"resources/Pngs/ness.png"},
+    {fighter: "Captain Falcon",active: true, imgpath:"resources/Pngs/captain_falcon.png"},
+    {fighter: "Jigglypuff",active: true, imgpath:"resources/Pngs/jigglypuff.png"},
+    {fighter: "Ganondorf",active: true, imgpath:"resources/Pngs/ganondorf.png"},
+    {fighter: "Young Link",active: true, imgpath:"resources/Pngs/young_link.png"},
+    {fighter: "Lucina",active: true, imgpath:"resources/Pngs/lucina.png"},
+    {fighter: "Marth",active: true, imgpath:"resources/Pngs/marth.png"},
+    {fighter: "Falco",active: true, imgpath:"resources/Pngs/falco.png"},
+    {fighter: "Pichu",active: true, imgpath:"resources/Pngs/pichu.png"},
+    {fighter: "Dr. Mario",active: true, imgpath:"resources/Pngs/dr_mario.png"},
+    {fighter: "Zelda",active: true, imgpath:"resources/Pngs/zelda.png"},
+    {fighter: "Sheik",active: true, imgpath:"resources/Pngs/sheik.png"},
+    {fighter: "Ice Climbers",active: true, imgpath:"resources/Pngs/ice_climbers.png"},
+    {fighter: "Bowser",active: true, imgpath:"resources/Pngs/bowser.png"},
+    {fighter: "Daisy",active: true, imgpath:"resources/Pngs/daisy.png"},
+    {fighter: "Peach",active: true, imgpath:"resources/Pngs/peach.png"},
+    {fighter: "Mewtwo",active: true, imgpath:"resources/Pngs/mewtwo.png"},
+    {fighter: "Roy",active: true, imgpath:"resources/Pngs/roy.png"},
+    {fighter: "Chrom",active: true, imgpath:"resources/Pngs/chrom.png"},
+    {fighter: "Game & Watch",active: true, imgpath:"resources/Pngs/mr_game_and_watch.png"},
+    {fighter: "Meta Knight",active: true, imgpath:"resources/Pngs/meta_knight.png"},
+    {fighter: "Pit",active: true, imgpath:"resources/Pngs/pit.png"},
+    {fighter: "Dark Pit",active: true, imgpath:"resources/Pngs/dark_pit.png"},
+    {fighter: "Zero Suit Samus",active: true, imgpath:"resources/Pngs/zero_suit_samus.png"},
+    {fighter: "Wario",active: true, imgpath:"resources/Pngs/wario.png"},
+    {fighter: "Snake",active: true, imgpath:"resources/Pngs/snake.png"},
+    {fighter: "Ike",active: true, imgpath:"resources/Pngs/ike.png"},
+    {fighter: "Pokemon Trainer",active: true, imgpath:"resources/Pngs/pokemon_trainer.png"},
+    {fighter: "Diddy Kong",active: true, imgpath:"resources/Pngs/diddy_kong.png"},
+    {fighter: "Little Mac",active: true, imgpath:"resources/Pngs/little_mac.png"},
+    {fighter: "Rosalina",active: true, imgpath:"resources/Pngs/rosalina_and_luma.png"},
+    {fighter: "Wii Fit Trainer",active: true, imgpath:"resources/Pngs/wii_fit_trainer.png"},
+    {fighter: "Mega Man",active: true, imgpath:"resources/Pngs/mega_man.png"},
+    {fighter: "Villager",active: true, imgpath:"resources/Pngs/villager.png"},
+    {fighter: "Wolf",active: true, imgpath:"resources/Pngs/wolf.png"},
+    {fighter: "Toon Link",active: true, imgpath:"resources/Pngs/toon_link.png"},
+    {fighter: "ROB",active: true, imgpath:"resources/Pngs/rob.png"},
+    {fighter: "Lucario",active: true, imgpath:"resources/Pngs/lucario.png"},
+    {fighter: "Olimar",active: true, imgpath:"resources/Pngs/olimar.png"},
+    {fighter: "King Dedede",active: true, imgpath:"resources/Pngs/king_dedede.png"},
+    {fighter: "Sonic",active: true, imgpath:"resources/Pngs/sonic.png"},
+    {fighter: "Lucas",active: true, imgpath:"resources/Pngs/lucas.png"},
+    {fighter: "Greninja",active: true, imgpath:"resources/Pngs/greninja.png"},
+    {fighter: "Palutena",active: true, imgpath:"resources/Pngs/palutena.png"},
+    {fighter: "Pacman",active: true, imgpath:"resources/Pngs/pac_man.png"},
+    {fighter: "Robin",active: true, imgpath:"resources/Pngs/robin.png"},
+    {fighter: "Shulk",active: true, imgpath:"resources/Pngs/shulk.png"},
+    {fighter: "Bowser Jr.",active: true, imgpath:"resources/Pngs/bowser_jr.png"},
+    {fighter: "Duck Hunt Duo",active: true, imgpath:"resources/Pngs/duck_hunt.png"},
+    {fighter: "Ryu",active: true, imgpath:"resources/Pngs/ryu.png"},
+    {fighter: "Ken",active: true, imgpath:"resources/Pngs/ken.png"},
+    {fighter: "Cloud",active: true, imgpath:"resources/Pngs/cloud.png"},
+    {fighter: "Corrin",active: true, imgpath:"resources/Pngs/corrin.png"},
+    {fighter: "Bayonetta",active: true, imgpath:"resources/Pngs/bayonetta.png"},
+    {fighter: "Inkling",active: true, imgpath:"resources/Pngs/inkling.png"},
+    {fighter: "Ridley",active: true, imgpath:"resources/Pngs/ridley.png"},
+    {fighter: "Simon",active: true, imgpath:"resources/Pngs/simon.png"},
+    {fighter: "Ricther",active: true, imgpath:"resources/Pngs/richter.png"},
+    {fighter: "King K Rool",active: true, imgpath:"resources/Pngs/king_k_rool.png"},
+    {fighter: "Isabelle",active: true, imgpath:"resources/Pngs/isabelle.png"},
+    {fighter: "Incineroar",active: true, imgpath:"resources/Pngs/gaogaen.png"},
+    {fighter: "Pirhana Plant",active: true, imgpath:"resources/Pngs/packun_flower.png"},
+    {fighter: "Joker",active: true, imgpath:"resources/Pngs/joker.png"},
+    {fighter: "Hero",active: true, imgpath:"resources/Pngs/dq_hero.png"},
+    {fighter: "Banjo",active: true, imgpath:"resources/Pngs/banjo_and_kazooie.png"},
+    {fighter: "Terry",active: true, imgpath:"resources/Pngs/terry.png"},
+    {fighter: "Byleth",active: true, imgpath:"resources/Pngs/byleth.png"},
+    {fighter: "Min Min",active: true, imgpath:"resources/Pngs/minmin.png"},
+    {fighter: "Steve",active: true, imgpath:"resources/Pngs/steve.png"},
+    {fighter: "Sephiroth",active: true, imgpath:"resources/Pngs/sephiroth.png"},
+    {fighter: "Pyra & Mythra",active: true, imgpath:"resources/Pngs/homura.png"},
+    {fighter: "Kazuya",active: true, imgpath:"resources/Pngs/kazuya.png"},
+    {fighter: "Sora",active: true, imgpath:"resources/Pngs/sora.png"}
     ]
     
 let players = [];
@@ -102,18 +101,17 @@ let rosterHtml = ""; // html code for the roster that is displayed upon render
 let poolsHtml = ""; // html code for the pools that is displayed upon render
 
 function render(){
-
     // roster render
     fighters.forEach(currentFighter => {
-
-    if(currentFighter.active) {
-        rosterHtml += `<li id="${currentFighter.fighter}" onclick="toggleFighter(this.id)">${currentFighter.fighter}</li>`;
-    } else {
-        rosterHtml += `<li class="disabled" id="${currentFighter.fighter}" onclick="toggleFighter(this.id)">${currentFighter.fighter}</li>`;
-    }
+    rosterHtml += `<li id="${currentFighter.fighter}" onclick="toggleFighter(this.id)"><img src="${currentFighter.imgpath}"></li>`;
     })
     charRoster.innerHTML = rosterHtml;
     rosterHtml = ""
+}
+render(); // initial render
+
+
+function renderPools(){
 
     // pools render
     pools.forEach((pool, index) => {
@@ -143,14 +141,13 @@ function render(){
     poolsHtml = ""
 }
 
-render(); // initial render
-
-
 function toggleFighter(currentFighter){
     console.log("toggle " + currentFighter); 
-    fighterValue = fighters.find(obj => obj.fighter === currentFighter);
+    fighterValue = fighters.find(obj => obj.fighter === currentFighter); // finds object with same referenece since passing objects through onclick is unintuitive
+    console.log(fighterValue);
     fighterValue.active = !fighterValue.active 
-    render();
+    if(!fighterValue.active) document.getElementById(fighterValue.fighter).classList.add("disabled")
+        else document.getElementById(fighterValue.fighter).classList.remove("disabled")
 }
 
 function collectCurrentPool(){
@@ -177,26 +174,27 @@ function collectCurrentPool(){
             name:document.getElementById("poolName").value,
             data: newPool});
     }
-    render()
+    renderPools()
     document.getElementById("poolName").value = ""
 }
 
-function disableAll(){
-    fighters.forEach(currentFighter =>{
-        currentFighter.active = false
+function setAll(value){
+    if(value){
+        fighters.forEach(currentFighter =>{
+            currentFighter.active = true
+            document.getElementById(currentFighter.fighter).classList.remove("disabled")
     })
-    render()
-}
-function enableAll(){
-    fighters.forEach(currentFighter =>{
-        currentFighter.active = true
-    })
-    render()
+    } else {
+        fighters.forEach(currentFighter =>{
+            currentFighter.active = false
+            document.getElementById(currentFighter.fighter).classList.add("disabled")
+        })
+    }
 }
 
 function deleteMe(e){
     pools.splice(e.id,1) // e.id: id attribute of pool delete button in html
-    render()
+    renderPools()
 }
 
 function playGame() {
@@ -206,7 +204,7 @@ function playGame() {
 
     checkboxes.forEach((checkbox, index) => {
         if (checkbox.checked) {
-            selectedPools.push(pools[index]); // samme index som i pools-array
+            selectedPools.push(pools[index]);
         }
     });
 
@@ -234,11 +232,11 @@ function playGame() {
     }
 }
 
+function closeWindow(){
+    document.getElementById("characterPopup").style.display = "none"
+}
+
 document.getElementById("poolNameForm").addEventListener("submit", (e) => {
     e.preventDefault();
     collectCurrentPool(); 
 });
-
-function closeWindow(){
-    document.getElementById("characterPopup").style.display = "none"
-}
