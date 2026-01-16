@@ -1,18 +1,22 @@
 /* 
     TODO: 
-    +   -   move localstorageupdate to poolsrender?
-    + dont deselect pools after submit
-    +   -   probably ficed with  insertadjacenthtml
+    + move localstorageupdate to poolsrender?
     + sfx?
     + remove icon flicker after submit
     +   -   use insertadjacenthtml
+    + dont deselect pools after submit
+    +   -   probably ficed with  insertadjacenthtml
+    + replace onclick="" in html with eventlisteners
 */
 
+//DOM references 
 let charRoster = document.getElementById("character_interface");
 let poolsList = document.getElementById("pools");
+let playButton = document.getElementById("play_button")
+let characterPopup = document.getElementById("characterPopup")
+let poolName = document.getElementById("poolName")
 
-let pools = [];
-
+let pools = []; // saved pools
 let fighters = [
     {fighter: "Mario",active: true, imgpath:"resources/Pngs/mario.png"},
     {fighter: "DK",active: true, imgpath:"resources/Pngs/donkey_kong.png"},
@@ -105,11 +109,13 @@ let fighters = [
     {fighter: "Kazuya",active: true, imgpath:"resources/Pngs/kazuya.png"},
     {fighter: "Sora",active: true, imgpath:"resources/Pngs/sora.png"}]
 
+let popupActive = false;
+
 function render(){
     // roster render
     let rosterHtml = "";
     fighters.forEach(currentFighter => {
-    rosterHtml += `<li id="${currentFighter.fighter}" onclick="toggleFighter(this.id)"><img src="${currentFighter.imgpath}"></li>`;
+    rosterHtml += `<li id="${currentFighter.fighter}"><img id="${currentFighter.fighter}" src="${currentFighter.imgpath}"></li>`; //img has same id to allow eventlistener to find right object
     })
     charRoster.innerHTML = rosterHtml;
 }
@@ -141,8 +147,6 @@ function renderPools(){
     poolsList.innerHTML = poolsHtml;
 }
 
-
-
 function toggleFighter(currentFighter){
     // console.log("toggle " + currentFighter); 
     const fighterValue = fighters.find(obj => obj.fighter === currentFighter); // finds object with same referenece since passing objects through onclick is unintuitive
@@ -154,7 +158,7 @@ function toggleFighter(currentFighter){
 }
 
 function savePool(){
-    if (document.getElementById("poolName").value == "") return
+    if (poolName.value == "") return
     let newPool = [];
 
     fighters.forEach((currentFighter) => {
@@ -164,21 +168,21 @@ function savePool(){
     })
     // console.log(newPool);
 
-    const existingIndex = pools.findIndex(pool => pool.name.toLowerCase() === document.getElementById("poolName").value.toLowerCase());
+    const existingIndex = pools.findIndex(pool => pool.name.toLowerCase() === poolName.value.toLowerCase());
     if(existingIndex !==-1){
     //    console.log(existingIndex);
        pools[existingIndex] = {
-            name: document.getElementById("poolName").value,
+            name: poolName.value,
             data: newPool}
     } else {
         pools.push({
-            name:document.getElementById("poolName").value,
+            name:poolName.value,
             data: newPool});
     }
     // console.log(pools);
     
     renderPools()
-    document.getElementById("poolName").value = ""
+    poolName.value = ""
     updateLocalstorage("savedPools",pools)
 }
 
@@ -211,10 +215,12 @@ function playGame() {
             selectedPools.push(pools[index]);
         }
     });
+
     let containsEmptyPool = false
     selectedPools.forEach(pool =>{
         if(pool.data.length === 0) containsEmptyPool = true
     })
+
     if(containsEmptyPool){
         console.log("cant play with empty array");
         return
@@ -240,7 +246,8 @@ function playGame() {
     </div>
     `
     })
-    
+
+    // displays a different screen if all fighters are the same, as long as theres more that one player
     if (allRandomChars.every((fighter => fighter.fighter === allRandomChars[0].fighter)) && allRandomChars.length > 1) {
         console.log("ditto!");
         characterRevealHtml =  
@@ -252,18 +259,20 @@ function playGame() {
                 <img src="${allRandomChars[0].imgpath}">
             </div>
         </div>`
-
     }
 
-    document.getElementById("characterPopup").innerHTML = characterRevealHtml
+    characterPopup.innerHTML = characterRevealHtml
 
     if (selectedPools.length > 0) {
-            document.getElementById("characterPopup").style.display = "flex"
+            characterPopup.style.display = "flex"
+            popupActive = true;
     }
+    
 }
 
 function closeWindow(){
-    document.getElementById("characterPopup").style.display = "none"
+    characterPopup.style.display = "none"
+    popupActive = false;
 }
 
 function updateLocalstorage(key,data){
@@ -283,3 +292,23 @@ document.getElementById("poolNameForm").addEventListener("submit", (e) => {
     e.preventDefault();
     savePool(); 
 });
+
+charRoster.addEventListener("click",(clickedElement=>{
+    if(clickedElement.target.id !== "character_interface") { // prevents action on click on the ul itself
+        toggleFighter(clickedElement.target.id)
+    }  
+}))
+
+playButton.addEventListener("click", ()=> playGame())
+document.addEventListener("keydown", (e=>{
+    if(e.code == "Space"){
+        e.preventDefault()
+        if(popupActive) {
+            closeWindow()
+        } else {
+            playGame()
+        }
+    }
+}))
+
+characterPopup.addEventListener("click",()=> closeWindow())
