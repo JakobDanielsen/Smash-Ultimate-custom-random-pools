@@ -1,13 +1,20 @@
 @font-face {
   font-family: "SmashFont";
-  src: url("/resources/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf") format("truetype");
+  src: url("resources/super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+:root {
+  --primary: #ffffff;
+  --secondary: hsl(0, 0%, 99%);
+
 }
 
 body{
     margin: 2% 3%;
     width: fit-content;
+    background-color: var(--primary);
 }
 
 html {
@@ -63,8 +70,8 @@ img,h1,h2,p {
     padding: 0.7rem;
     animation: hueShift 60s linear infinite;
     list-style: none;
-    border-radius: 15%;
-    box-shadow: 0.4rem -0.4rem rgba(81, 14, 14, 0.12) ;
+    border-radius: 0.5em;
+    box-shadow: 0.5rem -0.5rem rgba(81, 14, 14, 0.102) ;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,7 +84,7 @@ img,h1,h2,p {
 }
 
 #character_interface li:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -102,7 +109,7 @@ img,h1,h2,p {
 
 #poolNameForm input,
 #poolNameForm button {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 1em;
 }
 
@@ -116,7 +123,7 @@ img,h1,h2,p {
 .pool {
     display: flex;
     align-items: center;
-    background: whitesmoke;
+    background: var(--secondary);
     padding: 0;
     margin: 1rem 0rem;
     height: fit-content;
@@ -191,8 +198,7 @@ img,h1,h2,p {
     left: 0;
     width: 100vw;
     height: 100vh;
-    
-    background-color: rgb(243, 243, 243);
+    background-color: var(--secondary);
     border-radius: 2rem;
 }
 
@@ -203,7 +209,7 @@ img,h1,h2,p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--primary);
     margin: 1rem;
     border-radius: 0.5rem;
     padding: 2rem;

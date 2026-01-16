@@ -100,7 +100,7 @@ let fighters = [
     {fighter: "Joker",active: true, imgpath:"resources/Pngs/joker.png"},
     {fighter: "Hero",active: true, imgpath:"resources/Pngs/dq_hero.png"},
     {fighter: "Banjo",active: true, imgpath:"resources/Pngs/banjo_and_kazooie.png"},
-    {fighter: "Terry",active: true, imgpath:"resources/Pngs/terry.png"},
+    {fighter: "Terry",active: true, imgpath:"resources/Pngs/Terry.png"},
     {fighter: "Byleth",active: true, imgpath:"resources/Pngs/byleth.png"},
     {fighter: "Min Min",active: true, imgpath:"resources/Pngs/minmin.png"},
     {fighter: "Steve",active: true, imgpath:"resources/Pngs/steve.png"},
