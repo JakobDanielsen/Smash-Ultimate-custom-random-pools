@@ -7,12 +7,13 @@
 
 body{
     margin: 2% 3%;
+    width: fit-content;
 }
 
 html {
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  text-transform: uppercase;
-&::-webkit-scrollbar {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    &::-webkit-scrollbar {
     display: none;
   }
 }
@@ -31,6 +32,13 @@ main button {
 
 form {
     display: flex;
+}
+
+img,h1,h2,p {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 #bottom {
@@ -207,12 +215,11 @@ button {
     cursor: pointer;
 }
 
-.playButton {
+#play_button {
     font-size: 5rem;
     padding: 2rem 7rem;
-    box-shadow: 3rem 3rem rgba(0, 0, 0, 0.1) ;
 }
-.playButton:hover{
+#play_button:hover{
     transform: scale(1.07);
     transform-origin: center;
 }
