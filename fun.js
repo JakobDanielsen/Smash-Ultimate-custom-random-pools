@@ -5,15 +5,16 @@
     + remove icon flicker after submit
     +   -   use insertadjacenthtml
     + dont deselect pools after submit
-    +   -   probably ficed with  insertadjacenthtml
+    +   -   probably ficed with insertadjacenthtml
 */
 
 //DOM references 
-let charRoster = document.getElementById("character_interface");
-let poolsList = document.getElementById("pools");
-let playButton = document.getElementById("play_button")
-let characterPopup = document.getElementById("characterPopup")
-let poolName = document.getElementById("poolName")
+const charRoster = document.getElementById("character_interface");
+const poolsList = document.getElementById("pools");
+const playButton = document.getElementById("play_button")
+const characterPopup = document.getElementById("character_popup")
+const poolName = document.getElementById("pool_name")
+const poolNameForm = document.getElementById("pool_name_form")
 
 let pools = []; // saved pools
 let fighters = [
@@ -287,7 +288,7 @@ if (localStorage.getItem("savedPools") !== null) {
     renderPools();
 }
 
-document.getElementById("poolNameForm").addEventListener("submit", (e) => {
+poolNameForm.addEventListener("submit", (e) => {
     e.preventDefault();
     savePool(); 
 });

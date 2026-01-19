@@ -21,11 +21,12 @@ body{
 }
 
 html {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-transform: uppercase;
-    &::-webkit-scrollbar {
+}
+
+html::-webkit-scrollbar {
     display: none;
-  }
 }
 
 h1{
@@ -110,13 +111,13 @@ img,h1,h2,p {
     list-style: none;
 }
 
-#poolNameForm input,
-#poolNameForm button {
+#pool_name_form input,
+#pool_name_form button {
     font-size: 1rem;
     padding: 1em;
 }
 
-#buttonInterface {
+#button_interface {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -192,7 +193,7 @@ img,h1,h2,p {
     margin: 2rem 1rem;
 }
 
-#characterPopup {
+#character_popup {
     position: fixed;
     display: none;
     justify-content: center;
@@ -274,7 +275,7 @@ select {
     }
 
 
-    #characterPopup {
+    #character_popup {
         flex-direction: column;
     }
 
