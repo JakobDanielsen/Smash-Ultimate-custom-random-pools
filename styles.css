@@ -249,6 +249,19 @@ select {
 }
 
 
+footer {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+footer img {
+    height: 5vh;
+    width: auto;
+}
+
 @media (max-width: 768px) {
     #button_interface{
         display: block;
